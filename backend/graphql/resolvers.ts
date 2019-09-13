@@ -1,6 +1,12 @@
+const userMap = {
+  name: "Yongbeen",
+  age: 20,
+  gender: "male"
+};
+
 const resolvers = {
   Query: {
-    name: () => "Yongbeen"
+    person: () => userMap
   }
 };
 

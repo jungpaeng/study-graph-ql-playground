@@ -1,3 +1,9 @@
-type Query {
+type UserMap {
   name: String!
+  age: Int!
+  gender: String!
+}
+
+type Query {
+  person: UserMap!
 }
