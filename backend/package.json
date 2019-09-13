@@ -19,6 +19,6 @@
     "typescript": "^3.5.3"
   },
   "scripts": {
-    "start": "nodemon --exec babel-node index.ts"
+    "start": "nodemon --exec babel-node --extensions \".ts\" index.ts"
   }
 }
