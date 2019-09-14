@@ -35,6 +35,18 @@ export const getById = (id: number) => (
   people.filter(person => person.id === id)[0]
 );
 
+export const addPerson = (name, age, gender) => {
+  const newPerson = {
+    id: people.length + 1,
+    name,
+    age,
+    gender
+  };
+  people.push(newPerson);
+
+  return newPerson;
+};
+
 export const deletePerson = (id) => {
   const cleanedPerson = people.filter(person => person.id !== id);
 
