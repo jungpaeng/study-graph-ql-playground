@@ -1,15 +1,28 @@
-type Person {
+type Torrents {
+  url: String!
+  hash: String!
+  quality: String!
+  seeds: Int!
+  peers: Int!
+  size: String!
+  date_uploaded: String!
+}
+
+type Movie {
   id: Int!
-  name: String!
-  age: Int!
-  gender: String!
+  url: String!
+  title: String!
+  title_long: String!
+  rating: Float!
+  runtime: String!
+  genres: [String]!
+  summary: String!
+  description_full: String!
+  language: String!
+  large_cover_image: String!
+  torrents: [Torrents]!
 }
 
 type Query {
-  people: [Person]!
-  person(id: Int!): Person
-}
-
-type Mutation {
-  addPerson(name: String!, age: Int, gender: String!): Person!
+  movies(limit: Int, rating: Float): [Movie]!
 }
