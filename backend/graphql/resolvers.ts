@@ -4,6 +4,8 @@ const resolvers = {
   Query: {
     people: () => people,
     person: (_, {id}) => getById(id)
+  },
+  Mutation: {
   }
 };
 
