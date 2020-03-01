@@ -1,12 +1,12 @@
 export const people = [
   {
-    id: "0",
+    id: 0,
     name: 'Person A',
     age: 18,
     gender: 'male'
   },
   {
-    id: "1",
+    id: 1,
     name: 'Person B',
     age: 18,
     gender: 'female'
