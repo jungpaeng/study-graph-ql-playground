@@ -8,6 +8,9 @@ import DetailTitle from "./DetailTitle";
 import DetailSubtitle from "./DetailSubtitle";
 import DetailDescription from "./DetailDescription";
 import DetailPoster from "./DetailPoster";
+import DetailRow from "./DetailRow";
+import Movie from "../../components/Movie";
+import SuggestionList from "./SuggestionList";
 
 const GET_MOVIE = gql`
   query getMovie($id: Int!) {
@@ -36,16 +39,25 @@ const Detail = () => {
 
   return (
     <DetailContainer>
-      <DetailColumn>
-        <DetailTitle>{loading ? "Loading..." : data?.movie?.title}</DetailTitle>
+      <DetailRow>
+        <DetailColumn>
+          <DetailTitle>{loading ? "Loading..." : data?.movie?.title}</DetailTitle>
+          {data?.movie && (
+            <>
+              <DetailSubtitle>{data?.movie?.language} - {data?.movie?.rating}</DetailSubtitle>
+              <DetailDescription>{data?.movie?.description_intro}</DetailDescription>
+            </>
+          )}
+        </DetailColumn>
         {data?.movie && (
-          <>
-            <DetailSubtitle>{data?.movie?.language} - {data?.movie?.rating}</DetailSubtitle>
-            <DetailDescription>{data?.movie?.description_intro}</DetailDescription>
-          </>
+          <DetailPoster bg={data?.movie?.medium_cover_image}/>
         )}
-      </DetailColumn>
-      <DetailPoster bg={data?.movie?.medium_cover_image}/>
+      </DetailRow>
+      <SuggestionList>
+        {data?.suggestions.map(item => (
+          <Movie {...item} />
+        ))}
+      </SuggestionList>
     </DetailContainer>
   );
 };
