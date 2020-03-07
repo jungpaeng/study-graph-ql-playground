@@ -28,13 +28,11 @@ const Home = () => {
         <HomeSubtitle>Test GraphQL</HomeSubtitle>
       </HomeHeader>
       {loading && <HomeLoading>Loading...</HomeLoading>}
-      {!loading && data.movies && (
-        <MovieList>
-          {data.movies.map(item => (
-            <Movie key={item.id} {...item} />
-          ))}
-        </MovieList>
-      )}
+      <MovieList>
+        {data?.movies.map(item => (
+          <Movie key={item.id} {...item} />
+        ))}
+      </MovieList>
     </HomeContainer>
   )
 };
