@@ -14,6 +14,8 @@ const GET_MOVIE = gql`
     movie(id: $id) {
       id
       title
+      language
+      rating
       medium_cover_image
       description_intro
     }
@@ -29,11 +31,15 @@ const Detail = () => {
   return (
     <DetailContainer>
       <DetailColumn>
-        <DetailTitle>Name</DetailTitle>
-        <DetailSubtitle>English · 4.5</DetailSubtitle>
-        <DetailDescription>lorem ipsum lalalla </DetailDescription>
+        <DetailTitle>{loading ? "Loading..." : data.movie.title}</DetailTitle>
+        {!loading && data.movie && (
+          <>
+            <DetailSubtitle>{data.movie.language} - {data.movie.rating}</DetailSubtitle>
+            <DetailDescription>{data.movie.description_intro}</DetailDescription>
+          </>
+        )}
       </DetailColumn>
-      <DetailPoster />
+      <DetailPoster bg={data ? data.movie && data.movie.medium_cover_image : ''}/>
     </DetailContainer>
   );
 };
