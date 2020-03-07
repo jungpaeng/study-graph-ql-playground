@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {gql} from 'apollo-boost';
 import {useQuery} from '@apollo/react-hooks';
+import Movie from '../../components/Movie';
 import HomeContainer from './HomeContainer';
 import HomeHeader from './HomeHeader';
 import HomeTitle from './HomeTitle';
@@ -26,6 +27,9 @@ const Home = () => {
         <HomeSubtitle>Test GraphQL</HomeSubtitle>
       </HomeHeader>
       {loading && <HomeLoading>Loading...</HomeLoading>}
+      {!loading
+        && data.movies
+        && data.movies.map(item => <Movie key={item.id} {...item} />)}
     </HomeContainer>
   )
 };
