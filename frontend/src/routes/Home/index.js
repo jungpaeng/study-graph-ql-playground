@@ -7,6 +7,7 @@ import HomeHeader from './HomeHeader';
 import HomeTitle from './HomeTitle';
 import HomeSubtitle from './HomeSubtitle';
 import HomeLoading from "./HomeLoading";
+import MovieList from "./MovieList";
 
 const GET_MOVIES = gql`
   {
@@ -27,9 +28,13 @@ const Home = () => {
         <HomeSubtitle>Test GraphQL</HomeSubtitle>
       </HomeHeader>
       {loading && <HomeLoading>Loading...</HomeLoading>}
-      {!loading
-        && data.movies
-        && data.movies.map(item => <Movie key={item.id} {...item} />)}
+      {!loading && data.movies && (
+        <MovieList>
+          {data.movies.map(item => (
+            <Movie key={item.id} {...item} />
+          ))}
+        </MovieList>
+      )}
     </HomeContainer>
   )
 };
