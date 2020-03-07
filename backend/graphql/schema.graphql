@@ -5,8 +5,10 @@ type Movie {
     summary: String!
     language: String!
     medium_cover_image: String!
+    genres: [String]
 }
 
 type Query {
+    movie(id: Int!): Movie
     movies(limit: Int, rating: Float): [Movie]!
 }
